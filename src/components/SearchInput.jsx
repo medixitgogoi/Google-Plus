@@ -21,7 +21,7 @@ const SearchInput = () => {
     }
 
     return (
-        <main id="searchBox" className="h-[40px] w-full md:w-[550px] flex items-center gap-3 px-4 border border-[#dfe1e5] rounded-3xl hover:bg-white hover:shadow-c hover:border-0 focus-within:shadow-c focus-within:border-0">
+        <main id="searchBox" className="h-[35px] w-full md:w-[550px] flex items-center gap-3 px-4 border border-[#dfe1e5] rounded-3xl hover:bg-white hover:shadow-c hover:border-0 focus-within:shadow-c focus-within:border-0">
             <AiOutlineSearch size={18} color="#9aa0a6" />
             <input
                 type="text"
@@ -40,8 +40,8 @@ const SearchInput = () => {
                         onClick={() => setSearchQuery("")}
                     />
                 )}
-                <img className="h-6 w-6 rounded-full cursor-pointer" src={MicIcon} alt="mic-icon" />
-                <img className="h-6 w-6 cursor-pointer" src={ImageIcon} alt="image-icon" />
+                <img className="h-5 w-5 rounded-full cursor-pointer" src={MicIcon} alt="mic-icon" />
+                <img className="h-5 w-5 cursor-pointer" src={ImageIcon} alt="image-icon" />
             </div>
         </main>
     );
