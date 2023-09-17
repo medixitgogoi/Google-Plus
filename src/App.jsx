@@ -19,7 +19,3 @@ function App() {
 }
 
 export default App;
-
-
-// AIzaSyAzkOdUl7P8rxL_OMd4WVdHlzgRsm0u94o
-// b4a47158d5827459e
