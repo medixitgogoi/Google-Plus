@@ -7,6 +7,7 @@ import SearchedItemTemplate from "./SearchedItemTemplate";
 import SearchedImageItemTemplate from "./SearchedImageItemTemplate";
 import Pagination from "./Pagination";
 import { Context } from "../utils/ContextApi";
+import Skeleton from "./Skeleton";
 
 const SearchResult = () => {
 
@@ -27,40 +28,47 @@ const SearchResult = () => {
         });
     }
 
+    // setTimeout was used below to test the skeleton shimmer effect
+    // setTimeout(() => {
+    // }, 3000);
+
     useEffect(() => {
         // fetchSearchResults();
     }, [query, startIndex, imageSearch]);
 
-    if (!results) return;
-    const { items, queries, searchInformation } = results;
-
     return (
         <div className="flex flex-col min-h-screen">
-            
+
             <SearchResultHeader />
 
-            <main className="grow p-[12px] pb-0 md:pr-5 md:pl-20">
-                <div className="flex text-sm text-[#70757a] mb-3">
-                    {`About ${searchInformation?.formattedTotalResults} results in (${searchInformation?.formattedSearchTime})`}
-                </div>
-                {!imageSearch ? (
-                    <div>
-                        {items?.map((item, index) => (
-                            <SearchedItemTemplate key={index} data={item} />
-                        ))}
-                    </div>
-                ) : (
-                    <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-2">
-                        {items?.map((item, index) => (
-                            <SearchedImageItemTemplate key={index} data={item} />
-                        ))}
-                    </div>
-                )}
-            </main>
+            {results?.items?.length > 0 ? (
 
-            <Pagination queries={queries} />
+                <main className="grow p-[12px] pb-0 md:pr-5 md:pl-20">
+                    <div className="flex text-sm text-[#70757a] mb-3">
+                        {`About ${results?.searchInformation?.formattedTotalResults} results in (${results?.searchInformation?.formattedSearchTime})`}
+                    </div>
+                    {!imageSearch ? (
+                        <div>
+                            {results?.items?.map((item, index) => (
+                                <SearchedItemTemplate key={index} data={item} />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-2">
+                            {results?.items?.map((item, index) => (
+                                <SearchedImageItemTemplate key={index} data={item} />
+                            ))}
+                        </div>
+                    )}
+                </main>
 
+            ) :
+                <Skeleton />
+            }
+
+            <Pagination queries={results?.queries} />
             <Footer />
+
         </div>
     );
 };

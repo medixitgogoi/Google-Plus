@@ -9,9 +9,7 @@ import ImageIcon from "../assets/image.svg";
 const SearchInput = () => {
 
     const navigate = useNavigate();
-
     const { query } = useParams();
-
     const [searchQuery, setSearchQuery] = useState(query || "");
 
     const searchQueryHandler = (e) => {
@@ -24,6 +22,7 @@ const SearchInput = () => {
         <main id="searchBox" className="h-[35px] w-full md:w-[550px] flex items-center gap-3 px-4 border border-[#dfe1e5] rounded-3xl hover:bg-white hover:shadow-c hover:border-0 focus-within:shadow-c focus-within:border-0">
             <AiOutlineSearch size={18} color="#9aa0a6" />
             <input
+                id="search"
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}

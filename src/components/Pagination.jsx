@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import { FiChevronRight, FiChevronLeft } from "react-icons/fi";
 import { useParams, useNavigate } from "react-router-dom";
-
-import Logo from "../assets/google-pagination-logo.png";
 import { pagination } from "../utils/Constants";
+import Logo from "../assets/google-pagination-logo.png";
 
 const Pagination = ({ queries }) => {
 
@@ -17,7 +16,7 @@ const Pagination = ({ queries }) => {
 
     const paginationClickHandler = (startIndex) => {
         setPage(startIndex);
-        navigate(`/${query}/${startIndex}`)
+        navigate(`/${query}/${startIndex}`);
     }
 
     return (
