@@ -28,7 +28,7 @@ const SearchResult = () => {
     }
 
     useEffect(() => {
-        fetchSearchResults();
+        // fetchSearchResults();
     }, [query, startIndex, imageSearch]);
 
     if (!results) return;
@@ -36,6 +36,7 @@ const SearchResult = () => {
 
     return (
         <div className="flex flex-col min-h-screen">
+            
             <SearchResultHeader />
 
             <main className="grow p-[12px] pb-0 md:pr-5 md:pl-20">
@@ -49,13 +50,15 @@ const SearchResult = () => {
                         ))}
                     </div>
                 ) : (
-                    <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6">
+                    <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-2">
                         {items?.map((item, index) => (
                             <SearchedImageItemTemplate key={index} data={item} />
                         ))}
                     </div>
                 )}
             </main>
+
+            <Pagination queries={queries} />
 
             <Footer />
         </div>
