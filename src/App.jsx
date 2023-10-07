@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Home from "./components/Home";
 import SearchResult from "./components/SearchResult";
 import { AppContext } from "./utils/ContextApi";
@@ -19,3 +18,6 @@ function App() {
 }
 
 export default App;
+
+// toggle dark and light mode using RTK
+// persist data using local storage on refresh

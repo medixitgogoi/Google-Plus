@@ -5,10 +5,12 @@ import SearchInput from "./SearchInput";
 import ProfileIcon from "./ProfileIcon";
 import { Context } from "../utils/ContextApi";
 import { menu } from "../utils/Constants";
+import { BiSun } from "react-icons/bi";
+import { BiSolidMoon } from "react-icons/bi";
 
 const SearchResultHeader = () => {
 
-    const { setImageSearch } = useContext(Context);
+    const { setImageSearch, mode, setMode } = useContext(Context);
 
     const [selectedMenu, setSelectedMenu] = useState("All");
 
@@ -17,8 +19,12 @@ const SearchResultHeader = () => {
         setImageSearch(menuItem.name === "Images" ? true : false);
     }
 
+    const modeHandler = () => {
+        setMode(mode === "light" ? "dark" : "light");
+    }
+
     return (
-        <div className="p-[15px] pb-0 md:pl-20 md:pr-5 md:pt-7 border-b border-[#eee8e8] flex flex-col md:block items-center sticky top-0 bg-white">
+        <div className={`p-[15px] pb-0 md:pl-20 md:pr-5 md:pt-7 border-b ${mode === "light" ? "border-[#eee8e8] bg-white" :"border-[#605d5d]"} flex flex-col md:block items-center sticky top-0 ${mode === "dark" && "bg-[#1b1c1c]"}`}>
 
             <div className="flex items-center justify-between w-full">
                 <div className="flex items-center grow">
@@ -31,6 +37,11 @@ const SearchResultHeader = () => {
                     </Link>
                     <SearchInput />
                 </div>
+                <div className="relative flex border border-black/[0.7] rounded-3xl p-[2px] mr-2 transition-all duration-200 cursor-pointer bg-white/[0.7]" onClick={modeHandler}>
+                    <BiSun />
+                    <BiSolidMoon />
+                    <div className={`mx-[2px] absolute h-4 w-4 rounded-full ${mode === "light" ? "left-0" : "right-0"} bg-black`} />
+                </div>
                 <div className="hidden md:block">
                     <ProfileIcon />
                 </div>
@@ -38,7 +49,7 @@ const SearchResultHeader = () => {
 
             <div className="flex ml-[-12px] mt-2">
                 {menu.map((menu, index) => (
-                    <span key={index} className="flex items-center p-3 text-[#5f6368] cursor-pointer relative" onClick={() => clickHandler(menu)}>
+                    <span key={index} className={`flex items-center p-3 ${mode === "light" ? "text-[#5f6368]" :"text-[#818487]"}  cursor-pointer relative`} onClick={() => clickHandler(menu)}>
                         <span className={`hidden md:block mr-[5px] ${selectedMenu === menu.name ? "text-[#1a73e8]" : ""}`}>{menu.icon}</span>
                         <span className={`text-sm font-semibold ${selectedMenu === menu.name ? "text-[#1a73e8]" : ""}`}>{menu.name}</span>
                         {selectedMenu === menu.name && (

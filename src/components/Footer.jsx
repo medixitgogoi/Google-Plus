@@ -1,15 +1,20 @@
 import { quickLinks, settingMenu } from "../utils/Constants";
+import { useContext } from "react";
+import { Context } from "../utils/ContextApi";
 
 const Footer = () => {
+
+    const { mode } = useContext(Context);
+
     return (
-        <footer className="bg-[#f2f2f2]">
-            <div className="flex justify-center md:justify-start py-[8px] px-[15px] md:px-[30px] border-b border-[#dadce0]">
+        <footer className={`${mode === "light" ? "bg-[#f2f2f2]" : "bg-[#292727]"}`}>
+            <div className={`flex justify-center md:justify-start py-[8px] px-[15px] md:px-[30px] border-b ${mode === "light" ? "border-[#dadce0]" :"border-[#dadce0]/[0.4]"}`}>
                 <span className="text-[#70757a] leading-none">
                     India
                 </span>
             </div>
 
-            <div className=" flex flex-col md:flex-row justify-between py-3 md:py-0 md:px-[15px] border-b border-[#dadce0]">
+            <div className=" flex flex-col md:flex-row justify-between py-3 md:py-0 md:px-[15px]">
                 <div className="flex justify-center">
                     {quickLinks.map((menu, index) => (
                         <span

@@ -13,15 +13,18 @@ const SearchResult = () => {
 
     const [results, setResults] = useState([]);
     const { query, startIndex } = useParams();
-    const { imageSearch } = useContext(Context);
+    const { imageSearch, mode } = useContext(Context);
+
+    console.log(mode);
 
     const fetchSearchResults = () => {
+        window.scrollTo(0, 0);
         let payload = { q: query, start: startIndex }
         if (imageSearch) {
             payload.searchType = 'image';
         }
         fetchDataFromApi(payload).then((res) => {
-            console.log(res);
+            // console.log(res);
             setResults(res);
         }).catch((error) => {
             console.log(error);
@@ -33,11 +36,11 @@ const SearchResult = () => {
     // }, 3000);
 
     useEffect(() => {
-        // fetchSearchResults();
+        fetchSearchResults();
     }, [query, startIndex, imageSearch]);
 
     return (
-        <div className="flex flex-col min-h-screen">
+        <div className={`flex flex-col min-h-screen ${mode === "dark" && "bg-[#1b1c1c]"}`}>
 
             <SearchResultHeader />
 

@@ -1,9 +1,18 @@
+import { useContext, useEffect } from "react";
 import Logo from "../assets/google-logo.png";
 import HomeHeader from "./HomeHeader";
 import SearchInput from "./SearchInput";
 import Footer from "./Footer";
+import { Context } from "../utils/ContextApi";
 
 const Home = () => {
+
+    const { setMode } = useContext(Context);
+
+    useEffect(() => {
+        setMode("light");
+    }, [])
+
     return (
         <div className="flex flex-col h-screen">
             <HomeHeader />
