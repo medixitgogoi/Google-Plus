@@ -37,7 +37,7 @@ const SearchResultHeader = () => {
                     </Link>
                     <SearchInput />
                 </div>
-                <div className="relative flex border border-black/[0.7] rounded-3xl p-[2px] mr-2 transition-all duration-200 cursor-pointer bg-white/[0.7]" onClick={modeHandler}>
+                <div className="relative flex gap-[2px] border border-black/[0.7] rounded-3xl p-[2px] mr-2 transition-all duration-200 cursor-pointer bg-white/[0.7]" onClick={modeHandler}>
                     <BiSun />
                     <BiSolidMoon />
                     <div className={`mx-[2px] absolute h-4 w-4 rounded-full ${mode === "light" ? "left-0" : "right-0"} bg-black`} />
