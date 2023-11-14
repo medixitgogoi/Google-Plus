@@ -21,7 +21,7 @@ const SearchInput = () => {
     }
 
     return (
-        <main id="searchBox" className={`h-[35px] w-full md:w-[550px] flex items-center gap-3 px-3 md:px-4 border rounded-3xl ${mode === "light" ? "hover:shadow-c border-[#dfe1e5]" : "border-[#605d5d]"} ${mode === "light" ? "focus-within:shadow-c" : "focus-within:shadow-slate-600"} focus-within:shadow-c ${mode === "light" && "focus-within:border-0 hover:border-0 hover:bg-white"}`}>
+        <main id="searchBox" className={`h-[35px] w-full md:w-[550px] flex items-center gap-1 md:gap-3 px-3 md:px-4 border rounded-3xl ${mode === "light" ? "hover:shadow-c border-[#dfe1e5]" : "border-[#605d5d]"} ${mode === "light" ? "focus-within:shadow-c" : "focus-within:shadow-slate-600"} focus-within:shadow-c ${mode === "light" && "focus-within:border-0 hover:border-0 hover:bg-white"}`}>
             <AiOutlineSearch size={18} color="#9aa0a6" />
             <input
                 id="search"
